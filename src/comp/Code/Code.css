@@ -13,6 +13,7 @@
   margin: 0 3px;
   border-radius: 7px;
   cursor: default;
+  font-weight: bolder;
 }
 
 .char:hover {
@@ -21,4 +22,5 @@
 
 .letter {
   width: 5vmin;
+  font-weight: bolder;
 }
