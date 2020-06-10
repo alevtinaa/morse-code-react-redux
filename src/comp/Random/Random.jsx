@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Random.css';
+import { codeText } from '../Code/Coder';
 
 export default () => {
-  let [poems, setPoems] = useState(null);
+  const [poems, setPoems] = useState(null);
 
   useEffect(
     () => {
@@ -17,12 +18,25 @@ export default () => {
   );
 
   return (
+    poems &&
     <div
       className='poem'
       >
-      <p>{poems && poems[0].name}</p>
-      <p>{poems && poems[0].content}</p>
-      <p>{poems && poems[0].author}</p>
+      <p>
+        {
+          codeText(poems[0].title, 'graphic')
+          }
+        </p>
+      <p>
+        {
+          codeText(poems[0].content, 'graphic')
+        }
+        </p>
+      <p>
+        {
+          codeText(poems[0].poet.name, 'graphic')
+        }
+        </p>
       </div>
   )
 };
