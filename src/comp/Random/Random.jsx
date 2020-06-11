@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Random.css';
 import { codeText } from '../Code/Coder';
+import Loader from '../Loader/Loader';
 
 export default () => {
   const [poems, setPoems] = useState(null);
@@ -18,7 +19,7 @@ export default () => {
   );
 
   return (
-    poems &&
+    poems ?
     <div
       className='poem'
       >
@@ -38,5 +39,8 @@ export default () => {
         }
         </p>
       </div>
+      :
+      <Loader
+        />
   )
 };
