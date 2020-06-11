@@ -1,11 +1,16 @@
 import React from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import {
+  setCodingType,
+  save,
+  } from './store/ac';
 import Nav from './comp/Nav/Nav';
 import Random from './comp/Random/Random';
 import Code from './comp/Code/Code';
 
-export default () => {
+let App = (props) => {
   return (
     <>
     <Nav
@@ -31,3 +36,17 @@ export default () => {
     </>
   );
 };
+
+let mapStateToProps = (state) => (
+  {
+    settings: state.settings,
+    savings: state.savings,
+  }
+);
+
+export default connect(mapStateToProps,
+  {
+    setCodingType,
+    save,
+  }
+)(App);
