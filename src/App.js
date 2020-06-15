@@ -9,6 +9,7 @@ import {
 import Nav from './comp/Nav/Nav';
 import Random from './comp/Random/Random';
 import Code from './comp/Code/Code';
+import Settings from './comp/Settings/Settings';
 
 let App = (props) => {
   return (
@@ -29,6 +30,15 @@ let App = (props) => {
       render={
         () =>
         <Code
+          />
+        }
+      />
+    <Route
+      path='/settings'
+      render={
+        () =>
+        <Settings
+          settings={props.settings}
           />
         }
       />
