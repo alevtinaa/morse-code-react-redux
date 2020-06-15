@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   setCodingType,
+  setRandomType,
   save,
   } from './store/ac';
 import Nav from './comp/Nav/Nav';
@@ -39,6 +40,8 @@ let App = (props) => {
         () =>
         <Settings
           settings={props.settings}
+          setCodingType={props.setCodingType}
+          setRandomType={props.setRandomType}
           />
         }
       />
@@ -57,6 +60,7 @@ let mapStateToProps = (state) => (
 export default connect(mapStateToProps,
   {
     setCodingType,
+    setRandomType,
     save,
   }
 )(App);

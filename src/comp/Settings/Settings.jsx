@@ -15,6 +15,11 @@ export default (props) => {
         <div
           className='input1'
           >
+          <form
+            onChange={
+              (e) => props.setRandomType(e.target.value)
+            }
+            >
           <span
             >
             <input
@@ -22,11 +27,11 @@ export default (props) => {
               name='randomType'
               id='randomType'
               value='poems'
-              checked={props.settings.randomType === 'poems'}
+              defaultChecked={props.settings.randomType === 'poems'}
               >
               </input>
               <label
-                forHTML='randomType'
+                forhtml='randomType'
                 >
                 poems
                 </label>
@@ -38,11 +43,11 @@ export default (props) => {
               name='randomType'
               id='randomType'
               value='lyrics'
-              checked={props.settings.randomType === 'lyrics'}
+              defaultChecked={props.settings.randomType === 'lyrics'}
               >
               </input>
               <label
-                forHTML='randomType'
+                forhtml='randomType'
                 >
                 lyrics
                 </label>
@@ -54,16 +59,17 @@ export default (props) => {
               name='randomType'
               id='randomType'
               value='jokes'
-              checked={props.settings.randomType === 'jokes'}
+              defaultChecked={props.settings.randomType === 'jokes'}
               >
               </input>
               <label
-                forHTML='randomType'
+                forhtml='randomType'
                 >
                 jokes
                 </label>
             </span>
-          </div>
+          </form>
+        </div>
       <span
         className='question2'
         >
@@ -72,6 +78,11 @@ export default (props) => {
       <div
         className='input2'
         >
+        <form
+          onChange={
+            (e) => props.setCodingType(e.target.value)
+          }
+          >
         <span
           >
           <input
@@ -79,11 +90,11 @@ export default (props) => {
             name='codingType'
             id='codingType'
             value='graphic'
-            checked={props.settings.codingType === 'graphic'}
+            defaultChecked={props.settings.codingType === 'graphic'}
             >
             </input>
             <label
-              forHTML='codingType'
+              forhtml='codingType'
               >
               {
                 codeWord('abc', 'graphic')
@@ -97,17 +108,18 @@ export default (props) => {
               name='codingType'
               id='codingType'
               value='fonetic'
-              checked={props.settings.codingType === 'fonetic'}
+              defaultChecked={props.settings.codingType === 'fonetic'}
               >
               </input>
               <label
-                forHTML='codingType'
+                forhtml='codingType'
                 >
                 {
                   codeWord('abc', 'fonetic')
                 }
                 </label>
               </span>
+            </form>
         </div>
       <span
         className='question3'
@@ -124,11 +136,11 @@ export default (props) => {
             name='colorScheme'
             id='colorScheme'
             value='pink'
-            checked={props.settings.colorScheme === 'pink'}
+            defaultChecked={props.settings.colorScheme === 'pink'}
             >
             </input>
             <label
-              forHTML='codingType'
+              forhtml='codingType'
               >
               pink
               </label>
@@ -149,11 +161,11 @@ export default (props) => {
             name='colorWord'
             id='colorWord'
             value='yes'
-            checked={props.settings.colorWord}
+            defaultChecked={props.settings.colorWord}
             >
             </input>
             <label
-              forHTML='colorWord'
+              forhtml='colorWord'
               >
               yes
               </label>
@@ -165,11 +177,11 @@ export default (props) => {
               name='colorWord'
               id='colorWord'
               value='no'
-              checked={!props.settings.colorWord}
+              defaultChecked={!props.settings.colorWord}
               >
               </input>
               <label
-                forHTML='colorWord'
+                forhtml='colorWord'
                 >
                 no
                 </label>

@@ -23,6 +23,13 @@ const settingsReducer = (state = initSettings, action) => {
           codingType: action.codingType,
         }
       );
+      case 'SET_RANDOM_TYPE':
+      return (
+        {
+          ...state,
+          randomType: action.randomType,
+        }
+      );
     default:
       return state;
   }
