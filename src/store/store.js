@@ -22,8 +22,7 @@ const settingsReducer = (state = initSettings, action) => {
           ...state,
           codingType: action.codingType,
         }
-      )
-      break;
+      );
     default:
       return state;
   }
@@ -41,8 +40,7 @@ const savingsReducer = (state = initSavings, action) => {
             }
           ]
         }
-      )
-      break;
+      );
     default:
 
   }

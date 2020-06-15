@@ -13,8 +13,9 @@ export default () => {
         'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
         .split('')
         .map(
-          l => <tr
+          (l, i) => <tr
             className='row'
+            key={i}
             >
               <td
                 key='1'

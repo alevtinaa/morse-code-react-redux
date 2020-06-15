@@ -1,7 +1,5 @@
 import React from 'react';
 
-const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const NUMBERS = '1234567890';
 const code = {
    'A': '01',
    'B': '1000',
@@ -46,36 +44,32 @@ export const codeWord = (word = 'Oops', type) => {
   switch (type) {
     case 'graphic':
       return word.toUpperCase().split('').map(
-        ch => code[ch] ?
+        (ch, i) => code[ch] ?
           <span
             className='char'
+            key={i}
             >
             {
               code[ch].replace(/0/g, '. ').replace(/1/g, '___ ')
             }
           </span>
           :
-          <span
-            >
-          </span>
-          )
-      break;
+          ''
+        );
     case 'fonetic':
       return word.toUpperCase().split('').map(
-        ch => code[ch] ?
+        (ch, i) => code[ch] ?
           <span
           className='char'
+          key={i}
           >
           {
             code[ch].replace(/0/g, 'di ').replace(/1/g, 'dah ')
           }
           </span>
           :
-          <span
-            >
-          </span>
-      )
-      break;
+          ''
+      );
     default:
       console.log('oops');
     }
@@ -83,12 +77,12 @@ export const codeWord = (word = 'Oops', type) => {
 
 export const codeText = (text = 'Oops', type) => {
   return text.split(' ').map(
-    w => <div
+    w => <span
       className='word'
       >
         {
           codeWord(w, type)
         }
-      </div>
+      </span>
     )
 };
