@@ -97,7 +97,7 @@ export default (props) => {
               forhtml='codingType'
               >
               {
-                codeWord('abc', 'graphic')
+                codeWord('abc', 'graphic', false)
               }
               </label>
             </span>
@@ -115,7 +115,7 @@ export default (props) => {
                 forhtml='codingType'
                 >
                 {
-                  codeWord('abc', 'fonetic')
+                  codeWord('abc', 'fonetic', false)
                 }
                 </label>
               </span>

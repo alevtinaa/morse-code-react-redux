@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Char } from '../Char/Char';
 
-const code = {
+export const code = {
    'A': '01',
    'B': '1000',
    'C': '1010',
@@ -39,34 +40,33 @@ const code = {
    '0': '11111',
 };
 
-export const codeWord = (word = 'Oops', type) => {
+export const codeWord = (word = 'Oops', type, shouldDecode) => {
 
   switch (type) {
     case 'graphic':
       return word.toUpperCase().split('').map(
         (ch, i) => code[ch] ?
-          <span
-            className='char'
+          <Char
             key={i}
-            >
-            {
-              code[ch].replace(/0/g, '. ').replace(/1/g, '___ ')
-            }
-          </span>
+            zeroReplacer='. '
+            oneReplacer='___ '
+            ch={ch}
+            i={i}
+            shouldDecode={shouldDecode}
+            />
           :
           ''
         );
     case 'fonetic':
       return word.toUpperCase().split('').map(
         (ch, i) => code[ch] ?
-          <span
-          className='char'
-          key={i}
-          >
-          {
-            code[ch].replace(/0/g, 'di ').replace(/1/g, 'dah ')
-          }
-          </span>
+          <Char
+            key={i}
+            zeroReplacer='di '
+            oneReplacer='dah '
+            ch={ch}
+            i={i}
+            />
           :
           ''
       );
@@ -75,13 +75,14 @@ export const codeWord = (word = 'Oops', type) => {
     }
 };
 
-export const codeText = (text = 'Oops', type) => {
+export const codeText = (text = 'Oops, no text found', type) => {
   return text.split(' ').map(
-    w => <span
+    (w, i) => <span
       className='word'
+      key={i}
       >
         {
-          codeWord(w, type)
+          codeWord(w, type, true)
         }
       </span>
     )

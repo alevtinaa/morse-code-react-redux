@@ -6,20 +6,6 @@
   height: 7vmin;
 }
 
-.char {
-  background: rgba(255, 170, 170, 0.5);
-  box-sizing: border-box;
-  padding: 1vmin;
-  margin: 0 3px;
-  border-radius: 7px;
-  cursor: default;
-  font-weight: bolder;
-}
-
-.char:hover {
-  background: rgba(255, 170, 170, 1);
-}
-
 .letter {
   width: 5vmin;
   font-weight: bolder;

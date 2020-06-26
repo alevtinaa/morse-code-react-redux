@@ -29,14 +29,14 @@ export default () => {
                 key='2'
                 >
                 {
-                  codeWord(l, 'graphic')
+                  codeWord(l, 'graphic', false)
                 }
               </td>
               <td
                 key='3'
                 >
                 {
-                  codeWord(l, 'fonetic')
+                  codeWord(l, 'fonetic', false)
                 }
               </td>
             </tr>
