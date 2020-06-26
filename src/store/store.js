@@ -9,9 +9,21 @@ let initSettings = {
 };
 
 let initSavings = {
-  poems: [],
-  lyrics: [],
-  jokes: [],
+  saved: {
+    poems: [],
+    lyrics: [],
+    jokes: []
+  },
+  current: {
+    poems: null,
+    lyrics: null,
+    jokes: null,
+  },
+  previous: {
+    poems: null,
+    lyrics: null,
+    jokes: null,
+  },
 };
 
 const settingsReducer = (state = initSettings, action) => {
@@ -41,15 +53,34 @@ const savingsReducer = (state = initSavings, action) => {
       return (
         {
           ...state,
-          [action.randomType]: [...state[action.randomType],
-            {
-              ...action.saving
-            }
-          ]
+          saved: {
+            ...state.saved,
+            [action.savingType]: state[action.savingType].slice().push(action.saving),
+          }
+        }
+      );
+    case 'SET_CURRENT':
+      return (
+        {
+          ...state,
+          current: {
+            ...state.current,
+            [action.savingType]: action.saving,
+          }
+        }
+      );
+    case 'SET_PREVIOUS':
+      return (
+        {
+          ...state,
+          previous: {
+            ...state.previous,
+            [action.savingType]: action.saving,
+          }
         }
       );
     default:
-
+      return state;
   }
 };
 
@@ -57,6 +88,7 @@ export default createStore(
   combineReducers(
     {
       settings: settingsReducer,
+      savings: savingsReducer,
     }
   ),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

@@ -1,46 +1,54 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import './Random.css';
-import { codeText } from '../Code/Coder';
-import Loader from '../Loader/Loader';
+import {
+  setCurrent,
+  setPrevious,
+} from '../../store/ac';
+import RandomButtons from '../Buttons/RandomButtons';
+import RandomPoem from './RandomPoem';
 
-export default () => {
-  const [poems, setPoems] = useState(null);
+let Random = (props) => {
 
-  useEffect(
-    () => {
-      fetch('https://www.poemist.com/api/v1/randompoems')
-        .then(
-          resp => resp.json()
-        )
-        .then(
-          data => setPoems(data)
-        )
-    }, []
-  );
+  const returnComponentByType = (type) => {
+    switch (type) {
+      case 'poems':
+        return (
+          <RandomPoem
+            settings={props.settings}
+            currentPoem={props.current.poem}
+            setCurrent={props.setCurrent}
+            previousPoem={props.previous.poem}
+            setPrevious={props.setPrevious}
+            />
+          );
+      default:
+        return (
+          'oops'
+          );
+        }
+      };
 
   return (
-    poems ?
-    <div
-      className='poem'
-      >
-      <p>
-        {
-          codeText(poems[0].title, 'graphic')
-          }
-        </p>
-      <p>
-        {
-          codeText(poems[0].content, 'graphic')
-        }
-        </p>
-      <p>
-        {
-          codeText(poems[0].poet.name, 'graphic')
-        }
-        </p>
-      </div>
-      :
-      <Loader
-        />
+    <>
+      {
+        returnComponentByType(props.settings.randomType)
+      }
+    </>
   )
 };
+
+let mapStateToProps = (state) => (
+  {
+    settings: state.settings,
+    current: state.savings.current,
+    previous: state.savings.previous,
+  }
+);
+
+export default connect(mapStateToProps,
+  {
+    setCurrent,
+    setPrevious,
+  }
+)(Random);
