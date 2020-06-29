@@ -1,0 +1,40 @@
+.random-buttons {
+  width: 100%;
+  position: sticky;
+  bottom: 0;
+  text-align: right;
+}
+
+.random-buttons img {
+  height: 30px;
+  width: 30px;
+}
+
+.random-buttons .active {
+  opacity: 1;
+  background: rgba(255, 170, 170, 1);
+}
+
+.random-buttons .disabled:hover {
+  opacity: .6;
+  cursor: default;
+}
+
+.random-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  outline: none;
+  margin: 0 1vmin 0 0;
+  box-sizing: border-box;
+  padding: 1vmin;
+  border: 2px solid #000;
+  border-radius: 7px;
+  opacity: .6;
+}
+
+.random-button:hover {
+  cursor: pointer;
+  opacity: 1;
+}
