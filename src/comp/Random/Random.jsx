@@ -4,36 +4,30 @@ import './Random.css';
 import {
   setCurrent,
   setPrevious,
+  save,
+  remove,
 } from '../../store/ac';
 import RandomButtons from '../Buttons/RandomButtons';
-import RandomPoem from './RandomPoem';
+import RandomContent from './RandomContent';
 
 let Random = (props) => {
 
-  const returnComponentByType = (type) => {
-    switch (type) {
-      case 'poems':
-        return (
-          <RandomPoem
-            settings={props.settings}
-            currentPoem={props.current.poem}
-            setCurrent={props.setCurrent}
-            previousPoem={props.previous.poem}
-            setPrevious={props.setPrevious}
-            />
-          );
-      default:
-        return (
-          'oops'
-          );
-        }
-      };
-
   return (
     <>
-      {
-        returnComponentByType(props.settings.randomType)
-      }
+      <RandomContent
+        settings={props.settings}
+        current={props.current[props.settings.randomType]}
+        />
+      <RandomButtons
+        randomType={props.settings.randomType}
+        setCurrent={props.setCurrent}
+        setPrevious={props.setPrevious}
+        current={props.current}
+        previous={props.previous}
+        save={props.save}
+        remove={props.remove}
+        saved={props.saved}
+        />
     </>
   )
 };
@@ -43,6 +37,7 @@ let mapStateToProps = (state) => (
     settings: state.settings,
     current: state.savings.current,
     previous: state.savings.previous,
+    saved: state.savings.saved,
   }
 );
 
@@ -50,5 +45,7 @@ export default connect(mapStateToProps,
   {
     setCurrent,
     setPrevious,
+    save,
+    remove,
   }
 )(Random);

@@ -15,9 +15,20 @@ let initSavings = {
     jokes: []
   },
   current: {
-    poems: null,
+    poems: {
+      title: ['Hi there'],
+      lines: [
+        'it seems that you\'ve decided to learn morse code',
+        'well, hope you\'ll have fun',
+        'take a look at buttons at the bottom of this page - they\'ll help you'
+      ],
+      author: ['me']
+    },
     lyrics: null,
-    jokes: null,
+    jokes: {
+      joke: ['renew the page to get some humor'],
+      category: [''],
+    },
   },
   previous: {
     poems: null,
@@ -55,17 +66,60 @@ const savingsReducer = (state = initSavings, action) => {
           ...state,
           saved: {
             ...state.saved,
-            [action.savingType]: state[action.savingType].slice().push(action.saving),
+            [action.savingType]: state.saved[action.savingType].concat(
+              {
+                ...action.saving,
+              }
+            ),
+          }
+        }
+      );
+    case 'REMOVE':
+      return (
+        {
+          ...state,
+          saved: {
+            ...state.saved,
+            [action.savingType]: state.saved[action.savingType].filter(
+              e => e.id !== action.savingId
+            ),
           }
         }
       );
     case 'SET_CURRENT':
+      let actionCurrent = (
+        () => {
+          let newCurrent = {
+            id: Date.now(),
+          };
+          for (let [key, value] of Object.entries({...action.current})) {
+            switch (key) {
+              case 'title':
+              case 'lines':
+              case 'author':
+              case 'joke':
+              case 'category':
+                  Object.defineProperty(newCurrent, key, {
+                    value: (Array.isArray(value) ? [...value] : [value]),
+                    enumerable: true,
+                    configurable: true,
+                    writable: true,
+                  }
+                )
+              };
+            };
+            return newCurrent;
+          }
+        )();
+
       return (
         {
           ...state,
           current: {
             ...state.current,
-            [action.savingType]: action.saving,
+            [action.currentType]: {
+              ...actionCurrent,
+            },
           }
         }
       );
@@ -75,7 +129,7 @@ const savingsReducer = (state = initSavings, action) => {
           ...state,
           previous: {
             ...state.previous,
-            [action.savingType]: action.saving,
+            [action.previousType]: action.previous,
           }
         }
       );

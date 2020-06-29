@@ -1,5 +1,6 @@
 const SET_CODING_TYPE = 'SET_CODING_TYPE';
 const SAVE = 'SAVE';
+const REMOVE = 'REMOVE';
 const SET_RANDOM_TYPE = 'SET_RANDOM_TYPE';
 const SET_CURRENT = 'SET_CURRENT';
 const SET_PREVIOUS = 'SET_PREVIOUS';
@@ -19,6 +20,14 @@ export let save = (savingType, saving) => (
   }
 );
 
+export let remove = (savingType, savingId) => (
+  {
+    type: REMOVE,
+    savingType,
+    savingId,
+  }
+);
+
 export let setRandomType = (randomType) => (
   {
     type: SET_RANDOM_TYPE,
@@ -26,18 +35,18 @@ export let setRandomType = (randomType) => (
   }
 );
 
-export let setCurrent = (savingType, saving) => (
+export let setCurrent = (currentType, current) => (
   {
     type: SET_CURRENT,
-    savingType,
-    saving,
+    currentType,
+    current,
   }
 );
 
-export let setPrevious = (savingType, saving) => (
+export let setPrevious = (previousType, previous) => (
   {
     type: SET_PREVIOUS,
-    savingType,
-    saving,
+    previousType,
+    previous,
   }
 );
