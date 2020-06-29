@@ -9,13 +9,14 @@ let initSettings = {
 };
 
 let initSavings = {
-  saved: {
-    poems: [],
-    lyrics: [],
-    jokes: []
-  },
+  saved: [
+    {
+      id: 0,
+    },
+  ],
   current: {
     poems: {
+      id: '',
       title: ['Hi there'],
       lines: [
         'it seems that you\'ve decided to learn morse code',
@@ -26,6 +27,7 @@ let initSavings = {
     },
     lyrics: null,
     jokes: {
+      id: '',
       joke: ['renew the page to get some humor'],
       category: [''],
     },
@@ -46,7 +48,7 @@ const settingsReducer = (state = initSettings, action) => {
           codingType: action.codingType,
         }
       );
-      case 'SET_RANDOM_TYPE':
+    case 'SET_RANDOM_TYPE':
       return (
         {
           ...state,
@@ -64,48 +66,52 @@ const savingsReducer = (state = initSavings, action) => {
       return (
         {
           ...state,
-          saved: {
+          saved: [
             ...state.saved,
-            [action.savingType]: state.saved[action.savingType].concat(
               {
                 ...action.saving,
+                type: action.savingType,
               }
-            ),
-          }
+            ],
         }
       );
     case 'REMOVE':
       return (
         {
           ...state,
-          saved: {
-            ...state.saved,
-            [action.savingType]: state.saved[action.savingType].filter(
-              e => e.id !== action.savingId
+          saved: [
+            ...state.saved.filter(
+              e => e.id !== action.removingId
             ),
-          }
+          ]
         }
       );
     case 'SET_CURRENT':
       let actionCurrent = (
         () => {
-          let newCurrent = {
-            id: Date.now(),
-          };
+          let newCurrent = {};
           for (let [key, value] of Object.entries({...action.current})) {
             switch (key) {
               case 'title':
               case 'lines':
               case 'author':
               case 'joke':
-              case 'category':
                   Object.defineProperty(newCurrent, key, {
                     value: (Array.isArray(value) ? [...value] : [value]),
                     enumerable: true,
                     configurable: true,
                     writable: true,
                   }
-                )
+                );
+                break;
+              case 'category':
+              case 'id':
+                  Object.defineProperty(newCurrent, key, {
+                    value,
+                    enumerable: true,
+                  }
+                );
+                break;
               };
             };
             return newCurrent;

@@ -75,14 +75,14 @@ export const codeWord = (word = 'Oops', type, shouldDecode) => {
     }
 };
 
-export const codeText = (text = 'Oops, no text found', type) => {
+export const codeText = (text = 'Oops, no text found', type, shouldDecode) => {
   return text.split(' ').map(
     (w, i) => <span
       className='word'
       key={i}
       >
         {
-          codeWord(w, type, true)
+          codeWord(w, type, shouldDecode)
         }
       </span>
     )

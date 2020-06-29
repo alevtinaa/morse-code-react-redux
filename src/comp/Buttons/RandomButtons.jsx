@@ -24,14 +24,14 @@ export default (props) => {
       className='random-buttons'
       >
       <Button
-        className={`random-button ${previous[randomType] ? '' : 'disabled'}`}
+        className={`random-button ${previous ? '' : 'disabled'}`}
         src={IconBack}
         clickHandler={
           () => {
-            let lastCurrent = current[randomType];
+            let lastCurrent = current;
             setCurrent(
               randomType,
-              previous[randomType]
+              previous
               );
             setPrevious(
               randomType,
@@ -39,25 +39,30 @@ export default (props) => {
               );
             }
           }
-        disabled={!previous[randomType]}
+        disabled={!previous}
         />
       <Button
-        className={`random-button ${isCurrentSaved(current[randomType], randomType, saved) ? 'active' : ''}`}
+        className={
+          `random-button
+            ${isCurrentSaved(current, randomType, saved) ? 'active'
+              : !current.id ? 'disabled'
+              : ''}`
+          }
         src={IconSave}
         clickHandler={
           () => {
-            isCurrentSaved(current[randomType], randomType, saved) ?
+            isCurrentSaved(current, randomType, saved) ?
               props.remove(
-                randomType,
-                current[randomType].id
+                current.id
               )
               :
               props.save(
                 randomType,
-                current[randomType]
+                current
               )
             }
           }
+        disabled={!current.id}
         />
       <Button
         className='random-button'
@@ -67,7 +72,7 @@ export default (props) => {
             randomType,
             setPrevious,
             setCurrent,
-            current[randomType]
+            current
             )
           }
         />

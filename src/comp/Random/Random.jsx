@@ -22,8 +22,8 @@ let Random = (props) => {
         randomType={props.settings.randomType}
         setCurrent={props.setCurrent}
         setPrevious={props.setPrevious}
-        current={props.current}
-        previous={props.previous}
+        current={props.current[props.settings.randomType]}
+        previous={props.previous[props.settings.randomType]}
         save={props.save}
         remove={props.remove}
         saved={props.saved}

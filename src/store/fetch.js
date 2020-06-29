@@ -22,7 +22,10 @@ export const fetchData = (randomType, setPrevious, setCurrent, current) => {
     .then(
       data => setCurrent(
         randomType,
-        data
+        {
+          ...data,
+          id: Date.now(),
+        }
       )
     )
   };

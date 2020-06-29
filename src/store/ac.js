@@ -20,11 +20,10 @@ export let save = (savingType, saving) => (
   }
 );
 
-export let remove = (savingType, savingId) => (
+export let remove = (removingId) => (
   {
     type: REMOVE,
-    savingType,
-    savingId,
+    removingId,
   }
 );
 
