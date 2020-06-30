@@ -1,0 +1,53 @@
+.saved-table {
+  width: 100%;
+}
+
+.saved-table .type, .saved-table .date {
+  width: 20%;
+  font-size: 12pt;
+}
+
+.saved-table .content {
+  padding: 1vmin 3vmin;
+  text-align: left;
+}
+
+.saved-table .head {
+  font-size: 12pt;
+}
+
+.saved-table .head span {
+  cursor: pointer;
+}
+
+.saved-row {
+  background: rgba(245, 245, 245, 1);
+  height: 75px;
+}
+
+.saved-row:hover {
+  background: rgba(255, 170, 170, 0.5);
+  cursor: pointer;
+}
+
+.arrow-down {
+  display: inline-block;
+  margin-left: 1vmin;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #000;
+  cursor: pointer;
+}
+
+.arrow-up {
+  display: inline-block;
+  margin-left: 1vmin;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #000;
+  cursor: pointer;
+}

@@ -5,7 +5,7 @@ let initSettings = {
   randomType: 'poems',
   codingType: 'graphic',
   colorScheme: 'pink',
-  colorWord: true,
+  shouldSwipe: true,
 };
 
 let initSavings = {
@@ -28,7 +28,8 @@ let initSavings = {
     lyrics: null,
     jokes: {
       id: '',
-      joke: ['renew the page to get some humor'],
+      joke: ['got tired from serious stuff?',
+        'ok, seems that it\'s time for some humor'],
       category: [''],
     },
   },
@@ -70,7 +71,11 @@ const savingsReducer = (state = initSavings, action) => {
             ...state.saved,
               {
                 ...action.saving,
+                date: (new Date(action.saving.id)).toLocaleString('en-GB', { timeZone: 'UTC' }),
                 type: action.savingType,
+                content: `${action.saving.title ?
+                  action.saving.title
+                  : action.saving.joke[0].substr(0, 50).trim()}...`,
               }
             ],
         }
@@ -90,7 +95,7 @@ const savingsReducer = (state = initSavings, action) => {
       let actionCurrent = (
         () => {
           let newCurrent = {};
-          for (let [key, value] of Object.entries({...action.current})) {
+          for (let [key, value] of Object.entries(action.current)) {
             switch (key) {
               case 'title':
               case 'lines':

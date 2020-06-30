@@ -6,10 +6,12 @@ import {
   setCodingType,
   setRandomType,
   save,
+  remove,
   } from './store/ac';
 import Nav from './comp/Nav/Nav';
 import Random from './comp/Random/Random';
 import Code from './comp/Code/Code';
+import Saved from './comp/Saved/Saved';
 import Settings from './comp/Settings/Settings';
 
 let App = (props) => {
@@ -35,6 +37,16 @@ let App = (props) => {
         }
       />
     <Route
+      path='/saved'
+      render={
+        () =>
+        <Saved
+          saved={props.saved}
+          remove={props.remove}
+          />
+        }
+      />
+    <Route
       path='/settings'
       render={
         () =>
@@ -54,6 +66,7 @@ let mapStateToProps = (state) => (
   {
     settings: state.settings,
     savings: state.savings,
+    saved: state.savings.saved,
   }
 );
 
@@ -62,5 +75,6 @@ export default connect(mapStateToProps,
     setCodingType,
     setRandomType,
     save,
+    remove,
   }
 )(App);
