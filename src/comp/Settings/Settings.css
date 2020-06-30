@@ -31,14 +31,14 @@
   grid-area: input2;
 }
 
-.input1 span, .input2 span, .input3 span {
-  margin: 0 2vmin 0 0;
-}
-
 .input3 {
   grid-area: input3;
 }
 
 .input4 {
   grid-area: input4;
+}
+
+.form-field {
+  margin: 0 2vmin 0 0;
 }

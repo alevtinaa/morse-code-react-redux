@@ -21,6 +21,7 @@ export default (props) => {
             }
             >
           <span
+            className='form-field'
             >
             <input
               type='radio'
@@ -68,6 +69,7 @@ export default (props) => {
           }
           >
         <span
+          className='form-field'
           >
           <input
             type='radio'
@@ -81,7 +83,7 @@ export default (props) => {
               forhtml='codingType'
               >
               {
-                codeWord('abc', 'graphic', props.settings.shouldSwitch)
+                codeWord('abc', 'graphic', false)
               }
               </label>
             </span>
@@ -99,7 +101,7 @@ export default (props) => {
                 forhtml='codingType'
                 >
                 {
-                  codeWord('abc', 'fonetic', props.settings.shouldSwitch)
+                  codeWord('abc', 'fonetic', false)
                 }
                 </label>
               </span>
@@ -133,7 +135,7 @@ export default (props) => {
       <span
         className='question4'
         >
-        Wanna swipe letters on hover?
+        Wanna switch letters on hover?
         </span>
       <div
         className='input4'
@@ -144,6 +146,7 @@ export default (props) => {
           }
         >
         <span
+          className='form-field'
           >
           <input
             type='radio'

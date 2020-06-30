@@ -13,13 +13,18 @@ export default (props) => {
           'while it\'s development (as well as my studying) is still in progress',
           'and there\'re a lot of things to be done.',
           'Anyway, I hope you\'ll like what you see here',
-          'and give me the chance to learn from you...',
-          'and to work with you................',
+          'with all that entails...',
         ]
       }
       linesStyle={
         {
           0: {
+            'color': 'rgba(255, 0, 0, 0.5)',
+          },
+          6: {
+            'color': 'rgba(255, 0, 0, 0.5)',
+          },
+          7: {
             'color': 'rgba(255, 0, 0, 0.5)',
           }
         }

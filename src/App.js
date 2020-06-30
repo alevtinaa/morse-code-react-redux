@@ -43,6 +43,7 @@ let App = (props) => {
       render={
         () =>
         <Code
+          settings={props.settings}
           />
         }
       />

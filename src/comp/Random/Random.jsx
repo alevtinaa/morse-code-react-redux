@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import './Random.css';
 import {
@@ -11,17 +11,20 @@ import RandomButtons from '../Buttons/RandomButtons';
 import RandomContent from './RandomContent';
 
 let Random = (props) => {
+  let [isFetching, setIsFetching] = useState(false);
 
   return (
     <>
       <RandomContent
         settings={props.settings}
         current={props.current[props.settings.randomType]}
+        isFetching={isFetching}
         />
       <RandomButtons
         randomType={props.settings.randomType}
         setCurrent={props.setCurrent}
         setPrevious={props.setPrevious}
+        setIsFetching={setIsFetching}
         current={props.current[props.settings.randomType]}
         previous={props.previous[props.settings.randomType]}
         save={props.save}

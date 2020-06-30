@@ -72,7 +72,8 @@ export default (props) => {
             randomType,
             setPrevious,
             setCurrent,
-            current
+            current,
+            props.setIsFetching
             )
           }
         />

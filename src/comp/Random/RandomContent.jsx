@@ -32,16 +32,15 @@ export default (props) => {
   )();
 
   return (
-    props.current ?
+    props.isFetching ?
+      <Loader
+        />
+      :
       <div
-        className='poem'
         >
         {
           fullContent
         }
         </div>
-        :
-        <Loader
-          />
     )
 };

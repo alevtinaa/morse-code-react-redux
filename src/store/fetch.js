@@ -1,4 +1,4 @@
-export const fetchData = (randomType, setPrevious, setCurrent, current) => {
+export const fetchData = (randomType, setPrevious, setCurrent, current, setIsFetching) => {
   let endpoint = (
     (type) => {
       switch (type) {
@@ -14,18 +14,25 @@ export const fetchData = (randomType, setPrevious, setCurrent, current) => {
       }
     )(randomType);
 
+  setIsFetching(true);
   setPrevious(randomType, current);
   fetch(endpoint)
     .then(
       resp => resp.json()
     )
     .then(
-      data => setCurrent(
-        randomType,
-        {
-          ...data,
-          id: Date.now(),
-        }
-      )
+      data => {
+        data.lines && data.lines.length > 18 ?
+        fetchData(randomType, setPrevious, setCurrent, current, setIsFetching)
+        :
+        setCurrent(
+          randomType,
+          {
+            ...data,
+            id: Date.now(),
+          }
+        );
+        setIsFetching(false);
+      }
     )
   };
