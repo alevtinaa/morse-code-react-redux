@@ -11,7 +11,7 @@ export default (props) => {
             (line, i) => <span
               key={`message-${props.lines.length}-${line.length}-${i}`}
               style={
-                props.linesStyle[i] && props.linesStyle[i]
+                props.linesStyle && props.linesStyle[i] && props.linesStyle[i]
               }
               >
                 {

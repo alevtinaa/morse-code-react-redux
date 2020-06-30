@@ -5,7 +5,7 @@ let initSettings = {
   randomType: 'poems',
   codingType: 'graphic',
   colorScheme: 'pink',
-  shouldSwipe: true,
+  shouldSwitch: true,
 };
 
 let initSavings = {
@@ -54,6 +54,13 @@ const settingsReducer = (state = initSettings, action) => {
         {
           ...state,
           randomType: action.randomType,
+        }
+      );
+    case 'SET_SHOULD_SWITCH':
+      return (
+        {
+          ...state,
+          shouldSwitch: action.shouldSwitch,
         }
       );
     default:

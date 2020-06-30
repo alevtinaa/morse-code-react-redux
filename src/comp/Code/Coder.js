@@ -40,7 +40,7 @@ export const code = {
    '0': '11111',
 };
 
-export const codeWord = (word = 'Oops', type, shouldDecode) => {
+export const codeWord = (word = 'Oops', type, shouldSwitch) => {
 
   switch (type) {
     case 'graphic':
@@ -52,7 +52,7 @@ export const codeWord = (word = 'Oops', type, shouldDecode) => {
             oneReplacer='___ '
             ch={ch}
             i={i}
-            shouldDecode={shouldDecode}
+            shouldSwitch={shouldSwitch}
             />
           :
           ''
@@ -66,6 +66,7 @@ export const codeWord = (word = 'Oops', type, shouldDecode) => {
             oneReplacer='dah '
             ch={ch}
             i={i}
+            shouldSwitch={shouldSwitch}
             />
           :
           ''
@@ -75,14 +76,14 @@ export const codeWord = (word = 'Oops', type, shouldDecode) => {
     }
 };
 
-export const codeText = (text = 'Oops, no text found', type, shouldDecode) => {
+export const codeText = (text = 'Oops, no text found', type, shouldSwitch) => {
   return text.split(' ').map(
     (w, i) => <span
       className='word'
-      key={i}
+      key={`word-${i}`}
       >
         {
-          codeWord(w, type, shouldDecode)
+          codeWord(w, type, shouldSwitch)
         }
       </span>
     )

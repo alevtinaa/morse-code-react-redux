@@ -13,13 +13,13 @@ export default (props) => {
         (e, i) => (
           full.push(
             <p
-              key={i+Math.random()}
+              key={`full-${key}-${i}`}
               >
                 {
                   codeText(
                     e,
                     props.settings.codingType,
-                    true
+                    props.settings.shouldSwitch,
                     )
                 }
               </p>

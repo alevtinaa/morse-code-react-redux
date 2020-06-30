@@ -5,10 +5,12 @@ import { connect } from 'react-redux';
 import {
   setCodingType,
   setRandomType,
+  setShouldSwitch,
   save,
   remove,
   } from './store/ac';
 import Nav from './comp/Nav/Nav';
+import Main from './comp/Main/Main';
 import Random from './comp/Random/Random';
 import Code from './comp/Code/Code';
 import Saved from './comp/Saved/Saved';
@@ -25,6 +27,14 @@ let App = (props) => {
       render={
         () =>
         <Random
+          />
+        }
+      />
+    <Route
+      path='/main'
+      render={
+        () =>
+        <Main
           />
         }
       />
@@ -54,6 +64,7 @@ let App = (props) => {
           settings={props.settings}
           setCodingType={props.setCodingType}
           setRandomType={props.setRandomType}
+          setShouldSwitch={props.setShouldSwitch}
           />
         }
       />
@@ -74,6 +85,7 @@ export default connect(mapStateToProps,
   {
     setCodingType,
     setRandomType,
+    setShouldSwitch,
     save,
     remove,
   }

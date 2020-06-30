@@ -8,7 +8,7 @@ export class Char extends Component {
     this.node = React.createRef();
     this.char = props.ch;
     this.i = props.i;
-    this.shouldDecode = props.shouldDecode;
+    this.shouldSwitch = props.shouldSwitch;
     this.replacer = code[this.char]
       .replace(/0/g, this.props.zeroReplacer)
       .replace(/1/g, this.props.oneReplacer);
@@ -23,7 +23,7 @@ export class Char extends Component {
   }
 
   onMouseEnter = () => {
-    this.shouldDecode && this.setState(
+    this.shouldSwitch && this.setState(
       state => (
         {
           ...state,
@@ -35,7 +35,7 @@ export class Char extends Component {
   }
 
   onMouseLeave = () => {
-    this.props.shouldDecode && this.setState(
+    this.props.shouldSwitch && this.setState(
       state => (
         {
           ...state,

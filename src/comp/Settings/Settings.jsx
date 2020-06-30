@@ -36,22 +36,6 @@ export default (props) => {
                 poems
                 </label>
               </span>
-          <span
-            >
-            <input
-              type='radio'
-              name='randomType'
-              id='randomType'
-              value='lyrics'
-              defaultChecked={props.settings.randomType === 'lyrics'}
-              >
-              </input>
-              <label
-                forhtml='randomType'
-                >
-                lyrics
-                </label>
-              </span>
             <span
               >
               <input
@@ -97,7 +81,7 @@ export default (props) => {
               forhtml='codingType'
               >
               {
-                codeWord('abc', 'graphic', false)
+                codeWord('abc', 'graphic', props.settings.shouldSwitch)
               }
               </label>
             </span>
@@ -115,7 +99,7 @@ export default (props) => {
                 forhtml='codingType'
                 >
                 {
-                  codeWord('abc', 'fonetic', false)
+                  codeWord('abc', 'fonetic', props.settings.shouldSwitch)
                 }
                 </label>
               </span>
@@ -149,23 +133,28 @@ export default (props) => {
       <span
         className='question4'
         >
-        Should we show you words' borders?
+        Wanna swipe letters on hover?
         </span>
       <div
         className='input4'
+        >
+        <form
+          onChange={
+            (e) => props.setShouldSwitch(e.target.value)
+          }
         >
         <span
           >
           <input
             type='radio'
-            name='colorWord'
-            id='colorWord'
-            value='yes'
-            defaultChecked={props.settings.colorWord}
+            name='shouldSwitch'
+            id='shouldSwitch'
+            value='1'
+            defaultChecked={props.settings.shouldSwitch}
             >
             </input>
             <label
-              forhtml='colorWord'
+              forhtml='shouldSwitch'
               >
               yes
               </label>
@@ -174,18 +163,19 @@ export default (props) => {
             >
             <input
               type='radio'
-              name='colorWord'
-              id='colorWord'
-              value='no'
-              defaultChecked={!props.settings.colorWord}
+              name='shouldSwitch'
+              id='shouldSwitch'
+              value=''
+              defaultChecked={!props.settings.shouldSwitch}
               >
               </input>
               <label
-                forhtml='colorWord'
+                forhtml='shouldSwitch'
                 >
                 no
                 </label>
-              </span>
+            </span>
+          </form>
         </div>
     </div>
   )
